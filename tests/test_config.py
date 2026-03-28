@@ -156,5 +156,5 @@ class TestInitConfig:
         monkeypatch.setenv("FNSVR_CONFIG_DIR", str(config_dir))
         result = init_config(force=True)
         content = result.read_text()
-        assert "old" not in content
+        assert "old: true" not in content
         assert "categories" in content
