@@ -97,9 +97,9 @@ Requirements for initial release. Each maps to roadmap phases.
 
 ### Distribution
 
-- [ ] **DIST-01**: Package installable via `pip install fnsvr` from PyPI
-- [ ] **DIST-02**: Homebrew tap formula for `brew install fnsvr` single-command install
-- [ ] **DIST-03**: Entry point `fnsvr` available on PATH after install
+- [x] **DIST-01**: Package installable via `pip install fnsvr` from PyPI
+- [x] **DIST-02**: Homebrew tap formula for `brew install fnsvr` single-command install
+- [x] **DIST-03**: Entry point `fnsvr` available on PATH after install
 
 ### Website
 
@@ -217,9 +217,9 @@ Which phases cover which requirements. Updated during roadmap creation.
 | SCHED-02 | Phase 4 | Pending |
 | SCHED-03 | Phase 4 | Pending |
 | SCHED-04 | Phase 4 | Pending |
-| DIST-01 | Phase 4 | Pending |
-| DIST-02 | Phase 4 | Pending |
-| DIST-03 | Phase 4 | Pending |
+| DIST-01 | Phase 4 | Complete |
+| DIST-02 | Phase 4 | Complete |
+| DIST-03 | Phase 4 | Complete |
 | WEB-01 | Phase 5 | Pending |
 | WEB-02 | Phase 5 | Pending |
 | WEB-03 | Phase 5 | Pending |

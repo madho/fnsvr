@@ -84,7 +84,7 @@ Plans:
 
 Plans:
 - [ ] 04-01-PLAN.md -- launchd scheduler module with dynamic plist generation and CLI schedule commands
-- [ ] 04-02-PLAN.md -- PyPI packaging finalization and Homebrew tap formula
+- [x] 04-02-PLAN.md -- PyPI packaging finalization and Homebrew tap formula
 
 ### Phase 5: Landing Page
 **Goal**: fnsvr.com exists as a trust signal and getting-started resource for new users
