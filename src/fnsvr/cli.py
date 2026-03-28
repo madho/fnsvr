@@ -6,7 +6,8 @@ import sys
 
 import click
 
-from fnsvr import config, digest as digest_module, reviewer, scanner, storage
+from fnsvr import config, reviewer, scanner, scheduler, storage
+from fnsvr import digest as digest_module
 
 
 @click.group()
@@ -238,3 +239,51 @@ def stats() -> None:
             click.echo("  (none)")
     finally:
         conn.close()
+
+
+@main.group()
+def schedule() -> None:
+    """Manage launchd scheduling for automated scanning and digests."""
+
+
+@schedule.command()
+def install() -> None:
+    """Install launchd plists for automatic scanning and digest generation."""
+    try:
+        scan_path, digest_path = scheduler.install_schedule()
+        click.echo(f"Scan plist installed:   {scan_path}")
+        click.echo(f"Digest plist installed: {digest_path}")
+        click.echo("Scanning every 4 hours. Weekly digest on Mondays at 8am.")
+    except RuntimeError as exc:
+        click.echo(f"Error: {exc}", err=True)
+        sys.exit(1)
+    except Exception as exc:
+        click.echo(f"Install failed: {exc}", err=True)
+        sys.exit(1)
+
+
+@schedule.command()
+def uninstall() -> None:
+    """Uninstall launchd plists and stop automated scheduling."""
+    scan_removed, digest_removed = scheduler.uninstall_schedule()
+    if scan_removed:
+        click.echo("Scan plist removed.")
+    else:
+        click.echo("Scan plist was not installed.")
+    if digest_removed:
+        click.echo("Digest plist removed.")
+    else:
+        click.echo("Digest plist was not installed.")
+    click.echo("Scheduling disabled.")
+
+
+@schedule.command()
+def status() -> None:
+    """Show current launchd scheduling state."""
+    state = scheduler.schedule_status()
+    for name in ("scan", "digest"):
+        info = state[name]
+        if info["installed"]:
+            click.echo(f"{name}: installed ({info['plist_path']})")
+        else:
+            click.echo(f"{name}: not installed")
