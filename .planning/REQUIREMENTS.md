@@ -66,13 +66,13 @@ Requirements for initial release. Each maps to roadmap phases.
 
 ### Digest
 
-- [ ] **DIG-01**: User can run `fnsvr digest` to generate markdown digest of last 7 days
-- [ ] **DIG-02**: Digest includes summary counts by priority, category, and account
-- [ ] **DIG-03**: Emails grouped by category in urgency order: signature requests, tax docs, equity, brokerage, bank
-- [ ] **DIG-04**: Digest includes Action Required section listing unreviewed critical items
-- [ ] **DIG-05**: User can customize lookback with `--days N` and filter with `--unreviewed`
-- [ ] **DIG-06**: Digest can optionally auto-copy to Obsidian vault path (configurable, off by default)
-- [ ] **DIG-07**: `--no-save` flag prints to stdout without saving to disk
+- [x] **DIG-01**: User can run `fnsvr digest` to generate markdown digest of last 7 days
+- [x] **DIG-02**: Digest includes summary counts by priority, category, and account
+- [x] **DIG-03**: Emails grouped by category in urgency order: signature requests, tax docs, equity, brokerage, bank
+- [x] **DIG-04**: Digest includes Action Required section listing unreviewed critical items
+- [x] **DIG-05**: User can customize lookback with `--days N` and filter with `--unreviewed`
+- [x] **DIG-06**: Digest can optionally auto-copy to Obsidian vault path (configurable, off by default)
+- [x] **DIG-07**: `--no-save` flag prints to stdout without saving to disk
 
 ### Review
 
@@ -114,7 +114,7 @@ Requirements for initial release. Each maps to roadmap phases.
 - [x] **TEST-01**: Unit tests for detector.py -- pattern compilation, matching, case insensitivity, no-match, priority order
 - [x] **TEST-02**: Unit tests for storage.py -- DB init, insert, dedup, queries, mark reviewed, stats
 - [x] **TEST-03**: Unit tests for config.py -- loading, validation errors, path resolution, missing file handling
-- [ ] **TEST-04**: Unit tests for digest.py -- empty list, single item, multiple categories, action section
+- [x] **TEST-04**: Unit tests for digest.py -- empty list, single item, multiple categories, action section
 
 ## v2 Requirements
 
@@ -198,13 +198,13 @@ Which phases cover which requirements. Updated during roadmap creation.
 | NOTF-03 | Phase 3 | Complete |
 | NOTF-04 | Phase 3 | Complete |
 | NOTF-05 | Phase 3 | Complete |
-| DIG-01 | Phase 3 | Pending |
-| DIG-02 | Phase 3 | Pending |
-| DIG-03 | Phase 3 | Pending |
-| DIG-04 | Phase 3 | Pending |
-| DIG-05 | Phase 3 | Pending |
-| DIG-06 | Phase 3 | Pending |
-| DIG-07 | Phase 3 | Pending |
+| DIG-01 | Phase 3 | Complete |
+| DIG-02 | Phase 3 | Complete |
+| DIG-03 | Phase 3 | Complete |
+| DIG-04 | Phase 3 | Complete |
+| DIG-05 | Phase 3 | Complete |
+| DIG-06 | Phase 3 | Complete |
+| DIG-07 | Phase 3 | Complete |
 | REV-01 | Phase 3 | Complete |
 | REV-02 | Phase 3 | Complete |
 | REV-03 | Phase 3 | Complete |
@@ -228,7 +228,7 @@ Which phases cover which requirements. Updated during roadmap creation.
 | TEST-01 | Phase 1 | Complete |
 | TEST-02 | Phase 1 | Complete |
 | TEST-03 | Phase 1 | Complete |
-| TEST-04 | Phase 3 | Pending |
+| TEST-04 | Phase 3 | Complete |
 
 **Coverage:**
 - v1 requirements: 67 total
