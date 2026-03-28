@@ -48,3 +48,58 @@ def db_conn(tmp_path):
     conn = init_db(db_path)
     yield conn
     conn.close()
+
+
+@pytest.fixture
+def mock_gmail_service():
+    """Return a mock Gmail API service object."""
+    from unittest.mock import MagicMock
+
+    service = MagicMock()
+    return service
+
+
+@pytest.fixture
+def sample_message_payload():
+    """Return a Gmail API message payload with headers and parts."""
+    return {
+        "id": "msg123",
+        "snippet": "Your K-1 tax document is ready",
+        "payload": {
+            "headers": [
+                {"name": "Subject", "value": "Your K-1 Tax Document is Ready"},
+                {"name": "From", "value": "tax@turbotax.com"},
+                {"name": "Date", "value": "Mon, 15 Jan 2026 10:00:00 -0500"},
+            ],
+            "mimeType": "multipart/mixed",
+            "parts": [
+                {
+                    "mimeType": "text/plain",
+                    "body": {"size": 100},
+                },
+                {
+                    "filename": "K1_2025.pdf",
+                    "mimeType": "application/pdf",
+                    "body": {"attachmentId": "att123", "size": 50000},
+                },
+            ],
+        },
+    }
+
+
+@pytest.fixture
+def sample_message_no_match():
+    """Return a Gmail message that does NOT match any detection pattern."""
+    return {
+        "id": "msg456",
+        "snippet": "Hey, want to grab lunch?",
+        "payload": {
+            "headers": [
+                {"name": "Subject", "value": "Lunch plans for Friday"},
+                {"name": "From", "value": "friend@example.com"},
+                {"name": "Date", "value": "Mon, 15 Jan 2026 12:00:00 -0500"},
+            ],
+            "mimeType": "text/plain",
+            "parts": [],
+        },
+    }
