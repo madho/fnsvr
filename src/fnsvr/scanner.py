@@ -22,7 +22,7 @@ from google.oauth2.credentials import Credentials
 from google_auth_oauthlib.flow import InstalledAppFlow
 from googleapiclient.discovery import build
 
-from fnsvr import detector, storage
+from fnsvr import config as config_module, detector, downloader, storage
 from fnsvr.detector import CompiledCategory
 
 logger = logging.getLogger(__name__)
@@ -240,7 +240,15 @@ def scan_account(
 
     scanned = 0
     detected = 0
+    downloaded_total = 0
     errors: list[str] = []
+
+    # Resolve attachment save directory and allowed extensions
+    attachments_base = config_module.resolve_path(config["paths"]["attachments"])
+    save_dir = attachments_base / account["name"]
+    allowed_ext = config["scan"].get(
+        "attachment_extensions", [".pdf", ".xlsx", ".xls", ".csv", ".doc", ".docx"]
+    )
 
     for msg_id in message_ids:
         try:
@@ -263,7 +271,7 @@ def scan_account(
 
             match = detector.match_email(subject, sender, patterns)
             if match:
-                storage.insert_email(conn, {
+                email_row_id = storage.insert_email(conn, {
                     "message_id": msg_id,
                     "account_name": account["name"],
                     "account_email": account["email"],
@@ -277,6 +285,21 @@ def scan_account(
                     "has_attachments": 1 if has_attach else 0,
                 })
                 detected += 1
+
+                # Download attachments for matched emails
+                if email_row_id is not None:
+                    parts = payload.get("parts", [])
+                    if parts:
+                        try:
+                            dl_count = downloader.process_attachments(
+                                service, conn, email_row_id, msg_id,
+                                parts, save_dir, allowed_ext,
+                            )
+                            downloaded_total += dl_count
+                        except Exception as exc:
+                            logger.error(
+                                "Attachment processing failed for %s: %s", msg_id, exc
+                            )
         except Exception as exc:
             error_msg = f"Error processing message {msg_id}: {exc}"
             logger.warning(error_msg)
@@ -293,19 +316,20 @@ def scan_account(
         completed_at=completed_at,
         emails_scanned=scanned,
         emails_detected=detected,
-        attachments_downloaded=0,
+        attachments_downloaded=downloaded_total,
         errors="\n".join(errors) if errors else None,
         status=status,
     )
 
     logger.info(
-        "Scan complete for %s: %d scanned, %d detected, %d errors",
+        "Scan complete for %s: %d scanned, %d detected, %d downloaded, %d errors",
         account["name"],
         scanned,
         detected,
+        downloaded_total,
         len(errors),
     )
-    return (scanned, detected, 0)
+    return (scanned, detected, downloaded_total)
 
 
 def scan_all(
