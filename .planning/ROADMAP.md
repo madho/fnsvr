@@ -47,12 +47,12 @@ Plans:
   3. Scan supports --initial (90-day), --days N (custom), and --account (single account) flags, and every scan is logged with timing and counts
   4. PDF and spreadsheet attachments from detected emails are auto-downloaded to organized directories with no overwrites and failed downloads logged but non-blocking
   5. Expired OAuth tokens auto-refresh silently; failed refresh produces a clear error directing user to re-run setup
-**Plans**: TBD
+**Plans:** 3 plans
 
 Plans:
-- [ ] 02-01: TBD
-- [ ] 02-02: TBD
-- [ ] 02-03: TBD
+- [ ] 02-01-PLAN.md -- OAuth authentication and multi-account scan orchestration (scanner.py + tests)
+- [ ] 02-02-PLAN.md -- Attachment downloading with MIME traversal and safe file handling (downloader.py + tests)
+- [ ] 02-03-PLAN.md -- Wire scanner + downloader together and create CLI commands (cli.py + integration tests)
 
 ### Phase 3: User-Facing Output
 **Goal**: The tool delivers actionable output -- notifications alert on new detections, digests summarize activity, review enables triage, stats give quick status
@@ -106,7 +106,7 @@ Phases execute in numeric order (1 through 4 sequentially). Phase 5 can execute 
 | Phase | Plans Complete | Status | Completed |
 |-------|----------------|--------|-----------|
 | 1. Foundation | 3/3 | Complete   | 2026-03-28 |
-| 2. Gmail Integration | 0/3 | Not started | - |
+| 2. Gmail Integration | 0/3 | Planned | - |
 | 3. User-Facing Output | 0/3 | Not started | - |
 | 4. Automation and Distribution | 0/2 | Not started | - |
 | 5. Landing Page | 0/1 | Not started | - |
