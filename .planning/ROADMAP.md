@@ -52,7 +52,7 @@ Plans:
 Plans:
 - [x] 02-01-PLAN.md -- OAuth authentication and multi-account scan orchestration (scanner.py + tests)
 - [x] 02-02-PLAN.md -- Attachment downloading with MIME traversal and safe file handling (downloader.py + tests)
-- [ ] 02-03-PLAN.md -- Wire scanner + downloader together and create CLI commands (cli.py + integration tests)
+- [x] 02-03-PLAN.md -- Wire scanner + downloader together and create CLI commands (cli.py + integration tests)
 
 ### Phase 3: User-Facing Output
 **Goal**: The tool delivers actionable output -- notifications alert on new detections, digests summarize activity, review enables triage, stats give quick status
