@@ -40,9 +40,9 @@ fnsvr scan --initial          # First scan (90 days back)
 
 ## Documentation
 
-- [Vision](docs/VISION.md) -- Why this exists and design principles
-- [Product Requirements](docs/PRD.md) -- Features and acceptance criteria
-- [Technical Spec](docs/TECH_SPEC.md) -- Architecture and data model
+- [Vision](VISION.md) -- Why this exists and design principles
+- [Product Requirements](PRD.md) -- Features and acceptance criteria
+- [Technical Spec](TECH_SPEC.md) -- Architecture and data model
 - [Contributing](CONTRIBUTING.md) -- How to help
 
 ## License
