@@ -80,11 +80,11 @@ Plans:
   1. launchd plists are generated dynamically with absolute paths and install/uninstall via CLI commands (no manual plist editing or launchctl)
   2. Scan runs automatically every 4 hours and digest generates weekly (Monday 8am) via launchd with RunAtLoad
   3. User can install fnsvr via `pip install fnsvr` or `brew install fnsvr` and have the `fnsvr` command available on PATH
-**Plans**: TBD
+**Plans:** 2 plans
 
 Plans:
-- [ ] 04-01: TBD
-- [ ] 04-02: TBD
+- [ ] 04-01-PLAN.md -- launchd scheduler module with dynamic plist generation and CLI schedule commands
+- [ ] 04-02-PLAN.md -- PyPI packaging finalization and Homebrew tap formula
 
 ### Phase 5: Landing Page
 **Goal**: fnsvr.com exists as a trust signal and getting-started resource for new users
@@ -109,5 +109,5 @@ Phases execute in numeric order (1 through 4 sequentially). Phase 5 can execute 
 | 1. Foundation | 3/3 | Complete   | 2026-03-28 |
 | 2. Gmail Integration | 0/3 | Planned | - |
 | 3. User-Facing Output | 0/4 | Planned | - |
-| 4. Automation and Distribution | 0/2 | Not started | - |
+| 4. Automation and Distribution | 0/2 | Planned | - |
 | 5. Landing Page | 0/1 | Not started | - |
