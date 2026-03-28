@@ -67,8 +67,8 @@ Plans:
 **Plans:** 4 plans
 
 Plans:
-- [ ] 03-01-PLAN.md -- macOS notification module and scanner integration
-- [ ] 03-02-PLAN.md -- Markdown digest generator with storage helper and unit tests
+- [x] 03-01-PLAN.md -- macOS notification module and scanner integration
+- [x] 03-02-PLAN.md -- Markdown digest generator with storage helper and unit tests
 - [x] 03-03-PLAN.md -- Interactive review module
 - [ ] 03-04-PLAN.md -- CLI commands for digest, review, and stats
 

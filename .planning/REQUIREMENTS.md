@@ -58,11 +58,11 @@ Requirements for initial release. Each maps to roadmap phases.
 
 ### Notifications
 
-- [ ] **NOTF-01**: macOS native notification sent for each new detection via osascript
-- [ ] **NOTF-02**: Critical items use "Submarine" sound; high-priority items use "Pop" sound
-- [ ] **NOTF-03**: When detections exceed batch threshold (default: 5), a single summary notification is sent instead
-- [ ] **NOTF-04**: Notifications can be disabled via config
-- [ ] **NOTF-05**: Non-macOS platforms fail silently with debug log message
+- [x] **NOTF-01**: macOS native notification sent for each new detection via osascript
+- [x] **NOTF-02**: Critical items use "Submarine" sound; high-priority items use "Pop" sound
+- [x] **NOTF-03**: When detections exceed batch threshold (default: 5), a single summary notification is sent instead
+- [x] **NOTF-04**: Notifications can be disabled via config
+- [x] **NOTF-05**: Non-macOS platforms fail silently with debug log message
 
 ### Digest
 
@@ -193,11 +193,11 @@ Which phases cover which requirements. Updated during roadmap creation.
 | ATT-03 | Phase 2 | Complete |
 | ATT-04 | Phase 2 | Complete |
 | ATT-05 | Phase 2 | Complete |
-| NOTF-01 | Phase 3 | Pending |
-| NOTF-02 | Phase 3 | Pending |
-| NOTF-03 | Phase 3 | Pending |
-| NOTF-04 | Phase 3 | Pending |
-| NOTF-05 | Phase 3 | Pending |
+| NOTF-01 | Phase 3 | Complete |
+| NOTF-02 | Phase 3 | Complete |
+| NOTF-03 | Phase 3 | Complete |
+| NOTF-04 | Phase 3 | Complete |
+| NOTF-05 | Phase 3 | Complete |
 | DIG-01 | Phase 3 | Pending |
 | DIG-02 | Phase 3 | Pending |
 | DIG-03 | Phase 3 | Pending |
