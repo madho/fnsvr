@@ -6,7 +6,7 @@ import sys
 
 import click
 
-from fnsvr import config, scanner, storage
+from fnsvr import config, digest as digest_module, reviewer, scanner, storage
 
 
 @click.group()
@@ -128,3 +128,40 @@ def scan(initial: bool, days: int | None, account_name: str | None) -> None:
             f"\n{total_errors} account(s) had errors. Run with -v for details."
         )
     click.echo(f"Total detections: {total_detected}")
+
+
+@main.command()
+@click.option("--days", type=int, default=7, help="Lookback period in days.")
+@click.option("--unreviewed", is_flag=True, help="Show only unreviewed items.")
+@click.option("--no-save", is_flag=True, help="Print to stdout without saving.")
+def digest(days: int, unreviewed: bool, no_save: bool) -> None:
+    """Generate a markdown digest of recent detections."""
+    try:
+        cfg = config.load_config()
+    except (FileNotFoundError, ValueError) as exc:
+        click.echo(f"Config error: {exc}", err=True)
+        sys.exit(1)
+
+    config.ensure_dirs(cfg)
+    db_path = config.resolve_path(cfg["paths"]["database"])
+    conn = storage.init_db(db_path)
+
+    try:
+        rows = storage.get_emails_by_date_range(
+            conn, days=days, unreviewed_only=unreviewed
+        )
+        emails = [dict(row) for row in rows]
+        content = digest_module.generate_digest(
+            emails, title=f"fnsvr Digest -- Last {days} Days"
+        )
+
+        if no_save:
+            click.echo(content)
+            return
+
+        path = digest_module.save_digest(content, cfg, no_save=no_save)
+        if path:
+            click.echo(f"Digest saved: {path}")
+        click.echo(content)
+    finally:
+        conn.close()
