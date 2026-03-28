@@ -3,13 +3,13 @@ gsd_state_version: 1.0
 milestone: v1.0
 milestone_name: milestone
 status: unknown
-stopped_at: Completed 01-03-PLAN.md
-last_updated: "2026-03-28T19:44:21.899Z"
+stopped_at: Completed 02-02-PLAN.md
+last_updated: "2026-03-28T19:58:58.604Z"
 progress:
   total_phases: 5
   completed_phases: 1
-  total_plans: 3
-  completed_plans: 3
+  total_plans: 6
+  completed_plans: 4
 ---
 
 # Project State
@@ -19,12 +19,12 @@ progress:
 See: .planning/PROJECT.md (updated 2026-03-28)
 
 **Core value:** Financial emails with real deadlines and real dollar consequences must never go unnoticed, regardless of which inbox they landed in.
-**Current focus:** Phase 01 — Foundation
+**Current focus:** Phase 02 — Gmail Integration
 
 ## Current Position
 
-Phase: 2
-Plan: Not started
+Phase: 02 (Gmail Integration) — EXECUTING
+Plan: 2 of 3
 
 ## Performance Metrics
 
@@ -49,6 +49,7 @@ Plan: Not started
 | Phase 01-foundation P01 | 3min | 2 tasks | 8 files |
 | Phase 01 P02 | 2min | 1 tasks | 2 files |
 | Phase 01-foundation P03 | 2min | 1 tasks | 2 files |
+| Phase 02 P02 | 2min | 2 tasks | 2 files |
 
 ## Accumulated Context
 
@@ -64,6 +65,9 @@ Recent decisions affecting current work:
 - [Phase 01-foundation]: os.path.expandvars + expanduser for resolve_path (pathlib expanduser alone does not handle env vars)
 - [Phase 01]: All storage functions receive conn as parameter -- no global connection state
 - [Phase 01-foundation]: Plain substring matching with 'in' operator instead of regex for detector patterns
+- [Phase 02]: Used urlsafe_b64decode for both API and inline attachment data (Gmail URL-safe base64)
+- [Phase 02]: Each attachment try/except is independent -- one failure does not block others
+- [Phase 02]: Downloader receives save_dir as parameter rather than reading config directly
 
 ### Pending Todos
 
@@ -76,6 +80,6 @@ None yet.
 
 ## Session Continuity
 
-Last session: 2026-03-28T19:41:30.469Z
-Stopped at: Completed 01-03-PLAN.md
+Last session: 2026-03-28T19:58:58.602Z
+Stopped at: Completed 02-02-PLAN.md
 Resume file: None

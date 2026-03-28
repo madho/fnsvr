@@ -51,7 +51,7 @@ Plans:
 
 Plans:
 - [ ] 02-01-PLAN.md -- OAuth authentication and multi-account scan orchestration (scanner.py + tests)
-- [ ] 02-02-PLAN.md -- Attachment downloading with MIME traversal and safe file handling (downloader.py + tests)
+- [x] 02-02-PLAN.md -- Attachment downloading with MIME traversal and safe file handling (downloader.py + tests)
 - [ ] 02-03-PLAN.md -- Wire scanner + downloader together and create CLI commands (cli.py + integration tests)
 
 ### Phase 3: User-Facing Output

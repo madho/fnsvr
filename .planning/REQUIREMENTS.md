@@ -50,11 +50,11 @@ Requirements for initial release. Each maps to roadmap phases.
 
 ### Attachments
 
-- [ ] **ATT-01**: Detected financial emails with PDF/spreadsheet attachments are auto-downloaded
-- [ ] **ATT-02**: Downloads are filtered by configurable extension list (default: .pdf, .xlsx, .xls, .csv, .doc, .docx)
-- [ ] **ATT-03**: Files are saved to ~/.fnsvr/data/attachments/<account_name>/ with sanitized filenames
-- [ ] **ATT-04**: Existing files are never overwritten (counter suffix appended)
-- [ ] **ATT-05**: Failed downloads are logged and recorded in database but do not block scanning
+- [x] **ATT-01**: Detected financial emails with PDF/spreadsheet attachments are auto-downloaded
+- [x] **ATT-02**: Downloads are filtered by configurable extension list (default: .pdf, .xlsx, .xls, .csv, .doc, .docx)
+- [x] **ATT-03**: Files are saved to ~/.fnsvr/data/attachments/<account_name>/ with sanitized filenames
+- [x] **ATT-04**: Existing files are never overwritten (counter suffix appended)
+- [x] **ATT-05**: Failed downloads are logged and recorded in database but do not block scanning
 
 ### Notifications
 
@@ -188,11 +188,11 @@ Which phases cover which requirements. Updated during roadmap creation.
 | STOR-02 | Phase 1 | Complete |
 | STOR-03 | Phase 1 | Complete |
 | STOR-04 | Phase 1 | Complete |
-| ATT-01 | Phase 2 | Pending |
-| ATT-02 | Phase 2 | Pending |
-| ATT-03 | Phase 2 | Pending |
-| ATT-04 | Phase 2 | Pending |
-| ATT-05 | Phase 2 | Pending |
+| ATT-01 | Phase 2 | Complete |
+| ATT-02 | Phase 2 | Complete |
+| ATT-03 | Phase 2 | Complete |
+| ATT-04 | Phase 2 | Complete |
+| ATT-05 | Phase 2 | Complete |
 | NOTF-01 | Phase 3 | Pending |
 | NOTF-02 | Phase 3 | Pending |
 | NOTF-03 | Phase 3 | Pending |
