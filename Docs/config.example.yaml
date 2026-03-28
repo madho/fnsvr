@@ -1,0 +1,231 @@
+# fnsvr - Financial Inbox Monitor Configuration
+# Copy to ~/.fnsvr/config.yaml and fill in your details.
+# All processing happens locally. No data leaves your machine.
+
+# ─────────────────────────────────────────────
+# Gmail Accounts
+# ─────────────────────────────────────────────
+# Run `fnsvr setup <name>` for each account after configuring.
+accounts:
+  - name: personal
+    email: ""  # your.email@gmail.com
+    credentials_file: credentials/personal_credentials.json
+    token_file: credentials/personal_token.json
+
+  # Uncomment and add more:
+  # - name: work
+  #   email: ""
+  #   credentials_file: credentials/work_credentials.json
+  #   token_file: credentials/work_token.json
+  #
+  # - name: investing
+  #   email: ""
+  #   credentials_file: credentials/investing_credentials.json
+  #   token_file: credentials/investing_token.json
+
+# ─────────────────────────────────────────────
+# Local Storage Paths
+# ─────────────────────────────────────────────
+paths:
+  database: ~/.fnsvr/data/fnsvr.db
+  attachments: ~/.fnsvr/data/attachments
+  digests: ~/.fnsvr/data/digests
+  logs: ~/.fnsvr/data/logs
+
+# ─────────────────────────────────────────────
+# Detection Categories
+# ─────────────────────────────────────────────
+# Each pattern is a case-insensitive substring match.
+# Add your own brokers, banks, or services.
+
+categories:
+
+  tax_documents:
+    label: "Tax Documents (K1s, 1099s, W-2s)"
+    priority: critical
+    subject_patterns:
+      - "schedule k-1"
+      - "k-1"
+      - "tax document"
+      - "tax form"
+      - "1099"
+      - "w-2"
+      - "w2"
+      - "1098"
+      - "5498"
+      - "tax statement"
+      - "tax return"
+      - "annual tax"
+      - "tax reporting"
+      - "tax information"
+      - "important tax"
+    sender_patterns:
+      - "tax"
+      - "irs.gov"
+      - "turbotax"
+      - "hrblock"
+      - "taxact"
+
+  signature_requests:
+    label: "Documents Requiring Signature"
+    priority: critical
+    subject_patterns:
+      - "please sign"
+      - "review and sign"
+      - "signature request"
+      - "document to sign"
+      - "sign this document"
+      - "action required"
+      - "awaiting your signature"
+      - "needs your signature"
+      - "complete and sign"
+      - "countersign"
+      - "execute this"
+      - "signing request"
+      - "esignature"
+      - "e-signature"
+    sender_patterns:
+      - "docusign"
+      - "hellosign"
+      - "dropboxsign"
+      - "adobesign"
+      - "echosign"
+      - "pandadoc"
+      - "signnow"
+      - "signrequest"
+      - "eversign"
+      - "rightsignature"
+      - "ironclad"
+      - "juro"
+
+  equity_grants:
+    label: "Equity & Options Grant Notices"
+    priority: critical
+    subject_patterns:
+      - "stock option"
+      - "option grant"
+      - "rsu"
+      - "restricted stock"
+      - "vesting"
+      - "exercise"
+      - "equity grant"
+      - "equity award"
+      - "stock plan"
+      - "share"
+      - "cap table"
+      - "409a"
+      - "iso"
+      - "nso"
+      - "incentive stock"
+      - "espp"
+      - "stock purchase plan"
+    sender_patterns:
+      - "carta"
+      - "shareworks"
+      - "etrade"
+      - "fidelity"
+      - "equityedge"
+      - "stockplan"
+      - "pulley"
+      - "angellist"
+
+  brokerage_statements:
+    label: "Brokerage & Investment Statements"
+    priority: high
+    subject_patterns:
+      - "account statement"
+      - "monthly statement"
+      - "quarterly statement"
+      - "annual statement"
+      - "portfolio"
+      - "investment summary"
+      - "trade confirmation"
+      - "dividend"
+      - "capital gain"
+      - "distribution notice"
+      - "prospectus"
+      - "fund update"
+      - "year-end summary"
+      - "consolidated statement"
+      - "margin call"
+      - "account update"
+    sender_patterns:
+      - "fidelity"
+      - "schwab"
+      - "vanguard"
+      - "tdameritrade"
+      - "etrade"
+      - "interactivebrokers"
+      - "robinhood"
+      - "merrilledge"
+      - "merrilllynch"
+      - "morganstanley"
+      - "jpmorgan"
+      - "goldmansachs"
+      - "wealthfront"
+      - "betterment"
+      - "tastytrade"
+      - "tastyworks"
+
+  bank_statements:
+    label: "Bank Statements & Wire Confirmations"
+    priority: high
+    subject_patterns:
+      - "bank statement"
+      - "wire transfer"
+      - "wire confirmation"
+      - "incoming wire"
+      - "outgoing wire"
+      - "account statement"
+      - "direct deposit"
+      - "ach transfer"
+      - "funds transfer"
+      - "large transaction"
+      - "balance alert"
+    sender_patterns:
+      - "chase"
+      - "bankofamerica"
+      - "wellsfargo"
+      - "citi"
+      - "citibank"
+      - "hsbc"
+      - "capitalone"
+      - "ally"
+      - "sofi"
+      - "usbank"
+      - "pnc"
+      - "mercury"
+      - "brex"
+      - "wise"
+      - "transferwise"
+
+# ─────────────────────────────────────────────
+# Notifications
+# ─────────────────────────────────────────────
+notifications:
+  enabled: true
+  batch_threshold: 5
+  critical_sound: "Submarine"
+  normal_sound: "Pop"
+
+# ─────────────────────────────────────────────
+# Digest
+# ─────────────────────────────────────────────
+digest:
+  obsidian_copy: false
+  obsidian_path: ~/Documents/Obsidian Vault/Finance/Inbox Digests
+
+# ─────────────────────────────────────────────
+# Scan Settings
+# ─────────────────────────────────────────────
+scan:
+  initial_lookback_days: 90
+  regular_lookback_days: 3
+  max_results_per_scan: 100
+  attachment_extensions:
+    - ".pdf"
+    - ".xlsx"
+    - ".xls"
+    - ".csv"
+    - ".doc"
+    - ".docx"
