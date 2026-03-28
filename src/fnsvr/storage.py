@@ -116,6 +116,20 @@ def get_unreviewed(
     return conn.execute(query, params).fetchall()
 
 
+def get_emails_by_date_range(
+    conn: sqlite3.Connection,
+    days: int = 7,
+    unreviewed_only: bool = False,
+) -> list[sqlite3.Row]:
+    """Get emails from the last N days, ordered by priority then date."""
+    query = "SELECT * FROM detected_emails WHERE created_at >= datetime('now', ?)"
+    params: list = [f"-{days} days"]
+    if unreviewed_only:
+        query += " AND reviewed = 0"
+    query += " ORDER BY priority ASC, date_received DESC"
+    return conn.execute(query, params).fetchall()
+
+
 def mark_reviewed(
     conn: sqlite3.Connection, email_id: int, notes: str | None = None
 ) -> None:
