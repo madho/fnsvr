@@ -9,11 +9,11 @@ Requirements for initial release. Each maps to roadmap phases.
 
 ### Configuration
 
-- [ ] **CFG-01**: User can run `fnsvr init` to create ~/.fnsvr/ directory and copy example config
-- [ ] **CFG-02**: User can define multiple Gmail accounts in config.yaml with name, email, credentials path, and token path
-- [ ] **CFG-03**: Config validates required top-level keys (accounts, paths, categories, scan) and rejects invalid YAML with clear error messages
-- [ ] **CFG-04**: All path values expand ~ and $ENV_VARS correctly
-- [ ] **CFG-05**: Config dir is overridable via FNSVR_CONFIG_DIR environment variable
+- [x] **CFG-01**: User can run `fnsvr init` to create ~/.fnsvr/ directory and copy example config
+- [x] **CFG-02**: User can define multiple Gmail accounts in config.yaml with name, email, credentials path, and token path
+- [x] **CFG-03**: Config validates required top-level keys (accounts, paths, categories, scan) and rejects invalid YAML with clear error messages
+- [x] **CFG-04**: All path values expand ~ and $ENV_VARS correctly
+- [x] **CFG-05**: Config dir is overridable via FNSVR_CONFIG_DIR environment variable
 
 ### Authentication
 
@@ -113,7 +113,7 @@ Requirements for initial release. Each maps to roadmap phases.
 
 - [ ] **TEST-01**: Unit tests for detector.py -- pattern compilation, matching, case insensitivity, no-match, priority order
 - [ ] **TEST-02**: Unit tests for storage.py -- DB init, insert, dedup, queries, mark reviewed, stats
-- [ ] **TEST-03**: Unit tests for config.py -- loading, validation errors, path resolution, missing file handling
+- [x] **TEST-03**: Unit tests for config.py -- loading, validation errors, path resolution, missing file handling
 - [ ] **TEST-04**: Unit tests for digest.py -- empty list, single item, multiple categories, action section
 
 ## v2 Requirements
@@ -162,11 +162,11 @@ Which phases cover which requirements. Updated during roadmap creation.
 
 | Requirement | Phase | Status |
 |-------------|-------|--------|
-| CFG-01 | Phase 1 | Pending |
-| CFG-02 | Phase 1 | Pending |
-| CFG-03 | Phase 1 | Pending |
-| CFG-04 | Phase 1 | Pending |
-| CFG-05 | Phase 1 | Pending |
+| CFG-01 | Phase 1 | Complete |
+| CFG-02 | Phase 1 | Complete |
+| CFG-03 | Phase 1 | Complete |
+| CFG-04 | Phase 1 | Complete |
+| CFG-05 | Phase 1 | Complete |
 | AUTH-01 | Phase 2 | Pending |
 | AUTH-02 | Phase 2 | Pending |
 | AUTH-03 | Phase 2 | Pending |
@@ -227,7 +227,7 @@ Which phases cover which requirements. Updated during roadmap creation.
 | WEB-05 | Phase 5 | Pending |
 | TEST-01 | Phase 1 | Pending |
 | TEST-02 | Phase 1 | Pending |
-| TEST-03 | Phase 1 | Pending |
+| TEST-03 | Phase 1 | Complete |
 | TEST-04 | Phase 3 | Pending |
 
 **Coverage:**

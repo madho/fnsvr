@@ -33,7 +33,7 @@ Decimal phases appear between their surrounding integers in numeric order.
 **Plans:** 3 plans
 
 Plans:
-- [ ] 01-01-PLAN.md -- Project scaffold, config.py module, and config unit tests
+- [x] 01-01-PLAN.md -- Project scaffold, config.py module, and config unit tests
 - [ ] 01-02-PLAN.md -- SQLite storage layer with schema, CRUD, and unit tests
 - [ ] 01-03-PLAN.md -- Pattern detection engine with pure functions and unit tests
 
