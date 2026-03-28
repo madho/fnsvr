@@ -34,7 +34,7 @@ Decimal phases appear between their surrounding integers in numeric order.
 
 Plans:
 - [x] 01-01-PLAN.md -- Project scaffold, config.py module, and config unit tests
-- [ ] 01-02-PLAN.md -- SQLite storage layer with schema, CRUD, and unit tests
+- [x] 01-02-PLAN.md -- SQLite storage layer with schema, CRUD, and unit tests
 - [ ] 01-03-PLAN.md -- Pattern detection engine with pure functions and unit tests
 
 ### Phase 2: Gmail Integration

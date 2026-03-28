@@ -30,7 +30,7 @@ Requirements for initial release. Each maps to roadmap phases.
 - [ ] **DET-03**: Detection covers 5 categories: tax_documents (critical), signature_requests (critical), equity_grants (critical), brokerage_statements (high), bank_statements (high)
 - [ ] **DET-04**: Subject patterns are checked before sender patterns; first match wins across categories
 - [ ] **DET-05**: Each detection records: message_id, account, category, priority, subject, sender, date, snippet, matched_pattern, attachment status
-- [ ] **DET-06**: Duplicate emails (same message_id + account_email) are not re-detected
+- [x] **DET-06**: Duplicate emails (same message_id + account_email) are not re-detected
 
 ### Scanning
 
@@ -43,10 +43,10 @@ Requirements for initial release. Each maps to roadmap phases.
 
 ### Storage
 
-- [ ] **STOR-01**: SQLite database initializes with detected_emails, attachments, and scan_log tables
-- [ ] **STOR-02**: Database uses WAL journal mode for safe concurrent reads during writes
-- [ ] **STOR-03**: Tables are properly indexed (account, category, priority, reviewed, date_received)
-- [ ] **STOR-04**: No email content beyond subject, snippet (500 chars), and sender is stored
+- [x] **STOR-01**: SQLite database initializes with detected_emails, attachments, and scan_log tables
+- [x] **STOR-02**: Database uses WAL journal mode for safe concurrent reads during writes
+- [x] **STOR-03**: Tables are properly indexed (account, category, priority, reviewed, date_received)
+- [x] **STOR-04**: No email content beyond subject, snippet (500 chars), and sender is stored
 
 ### Attachments
 
@@ -112,7 +112,7 @@ Requirements for initial release. Each maps to roadmap phases.
 ### Testing
 
 - [ ] **TEST-01**: Unit tests for detector.py -- pattern compilation, matching, case insensitivity, no-match, priority order
-- [ ] **TEST-02**: Unit tests for storage.py -- DB init, insert, dedup, queries, mark reviewed, stats
+- [x] **TEST-02**: Unit tests for storage.py -- DB init, insert, dedup, queries, mark reviewed, stats
 - [x] **TEST-03**: Unit tests for config.py -- loading, validation errors, path resolution, missing file handling
 - [ ] **TEST-04**: Unit tests for digest.py -- empty list, single item, multiple categories, action section
 
@@ -177,17 +177,17 @@ Which phases cover which requirements. Updated during roadmap creation.
 | DET-03 | Phase 1 | Pending |
 | DET-04 | Phase 1 | Pending |
 | DET-05 | Phase 1 | Pending |
-| DET-06 | Phase 1 | Pending |
+| DET-06 | Phase 1 | Complete |
 | SCAN-01 | Phase 2 | Pending |
 | SCAN-02 | Phase 2 | Pending |
 | SCAN-03 | Phase 2 | Pending |
 | SCAN-04 | Phase 2 | Pending |
 | SCAN-05 | Phase 2 | Pending |
 | SCAN-06 | Phase 2 | Pending |
-| STOR-01 | Phase 1 | Pending |
-| STOR-02 | Phase 1 | Pending |
-| STOR-03 | Phase 1 | Pending |
-| STOR-04 | Phase 1 | Pending |
+| STOR-01 | Phase 1 | Complete |
+| STOR-02 | Phase 1 | Complete |
+| STOR-03 | Phase 1 | Complete |
+| STOR-04 | Phase 1 | Complete |
 | ATT-01 | Phase 2 | Pending |
 | ATT-02 | Phase 2 | Pending |
 | ATT-03 | Phase 2 | Pending |
@@ -226,7 +226,7 @@ Which phases cover which requirements. Updated during roadmap creation.
 | WEB-04 | Phase 5 | Pending |
 | WEB-05 | Phase 5 | Pending |
 | TEST-01 | Phase 1 | Pending |
-| TEST-02 | Phase 1 | Pending |
+| TEST-02 | Phase 1 | Complete |
 | TEST-03 | Phase 1 | Complete |
 | TEST-04 | Phase 3 | Pending |
 
