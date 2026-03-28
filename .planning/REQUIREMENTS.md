@@ -76,12 +76,12 @@ Requirements for initial release. Each maps to roadmap phases.
 
 ### Review
 
-- [ ] **REV-01**: User can run `fnsvr review` to enter interactive review loop showing each unreviewed item
-- [ ] **REV-02**: Each item displays priority, category, subject, sender, date, account, attachment status, snippet
-- [ ] **REV-03**: User can mark reviewed (with optional notes), skip, quit, or mark all remaining
-- [ ] **REV-04**: Review is filterable by `--category` and `--account`
-- [ ] **REV-05**: `--mark-all` flag for bulk review without interactive prompt
-- [ ] **REV-06**: Review status and notes are persisted in SQLite with timestamps
+- [x] **REV-01**: User can run `fnsvr review` to enter interactive review loop showing each unreviewed item
+- [x] **REV-02**: Each item displays priority, category, subject, sender, date, account, attachment status, snippet
+- [x] **REV-03**: User can mark reviewed (with optional notes), skip, quit, or mark all remaining
+- [x] **REV-04**: Review is filterable by `--category` and `--account`
+- [x] **REV-05**: `--mark-all` flag for bulk review without interactive prompt
+- [x] **REV-06**: Review status and notes are persisted in SQLite with timestamps
 
 ### Stats
 
@@ -205,12 +205,12 @@ Which phases cover which requirements. Updated during roadmap creation.
 | DIG-05 | Phase 3 | Pending |
 | DIG-06 | Phase 3 | Pending |
 | DIG-07 | Phase 3 | Pending |
-| REV-01 | Phase 3 | Pending |
-| REV-02 | Phase 3 | Pending |
-| REV-03 | Phase 3 | Pending |
-| REV-04 | Phase 3 | Pending |
-| REV-05 | Phase 3 | Pending |
-| REV-06 | Phase 3 | Pending |
+| REV-01 | Phase 3 | Complete |
+| REV-02 | Phase 3 | Complete |
+| REV-03 | Phase 3 | Complete |
+| REV-04 | Phase 3 | Complete |
+| REV-05 | Phase 3 | Complete |
+| REV-06 | Phase 3 | Complete |
 | STAT-01 | Phase 3 | Pending |
 | STAT-02 | Phase 3 | Pending |
 | SCHED-01 | Phase 4 | Pending |
