@@ -22,7 +22,7 @@ from google.oauth2.credentials import Credentials
 from google_auth_oauthlib.flow import InstalledAppFlow
 from googleapiclient.discovery import build
 
-from fnsvr import config as config_module, detector, downloader, storage
+from fnsvr import config as config_module, detector, downloader, notifier, storage
 from fnsvr.detector import CompiledCategory
 
 logger = logging.getLogger(__name__)
@@ -242,6 +242,7 @@ def scan_account(
     detected = 0
     downloaded_total = 0
     errors: list[str] = []
+    new_detections: list[dict] = []
 
     # Resolve attachment save directory and allowed extensions
     attachments_base = config_module.resolve_path(config["paths"]["attachments"])
@@ -286,6 +287,15 @@ def scan_account(
                 })
                 detected += 1
 
+                # Track genuinely new detections for notifications
+                if email_row_id is not None:
+                    new_detections.append({
+                        "category": match.category,
+                        "priority": match.priority,
+                        "subject": subject,
+                        "account_name": account["name"],
+                    })
+
                 # Download attachments for matched emails
                 if email_row_id is not None:
                     parts = payload.get("parts", [])
@@ -304,6 +314,13 @@ def scan_account(
             error_msg = f"Error processing message {msg_id}: {exc}"
             logger.warning(error_msg)
             errors.append(error_msg)
+
+    # Send notifications for new detections (never blocks scanning)
+    if new_detections:
+        try:
+            notifier.notify_detections(new_detections, config)
+        except Exception as exc:
+            logger.warning("Notification failed: %s", exc)
 
     status = "completed"
     if errors:
