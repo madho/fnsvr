@@ -165,3 +165,76 @@ def digest(days: int, unreviewed: bool, no_save: bool) -> None:
         click.echo(content)
     finally:
         conn.close()
+
+
+@main.command()
+@click.option("--category", default=None, help="Filter by category.")
+@click.option("--account", default=None, help="Filter by account name.")
+@click.option(
+    "--mark-all", "mark_all_flag", is_flag=True,
+    help="Mark all unreviewed as reviewed.",
+)
+def review(
+    category: str | None, account: str | None, mark_all_flag: bool
+) -> None:
+    """Interactively review unreviewed detections."""
+    try:
+        cfg = config.load_config()
+    except (FileNotFoundError, ValueError) as exc:
+        click.echo(f"Config error: {exc}", err=True)
+        sys.exit(1)
+
+    db_path = config.resolve_path(cfg["paths"]["database"])
+    conn = storage.init_db(db_path)
+
+    try:
+        emails = storage.get_unreviewed(conn, category=category, account=account)
+        if not emails:
+            click.echo("No unreviewed items.")
+            return
+
+        if mark_all_flag:
+            count = reviewer.mark_all(conn, emails)
+            click.echo(f"Marked {count} item(s) as reviewed.")
+        else:
+            reviewer.review_interactive(conn, emails)
+    finally:
+        conn.close()
+
+
+@main.command()
+def stats() -> None:
+    """Show summary statistics from local database."""
+    try:
+        cfg = config.load_config()
+    except (FileNotFoundError, ValueError) as exc:
+        click.echo(f"Config error: {exc}", err=True)
+        sys.exit(1)
+
+    db_path = config.resolve_path(cfg["paths"]["database"])
+    conn = storage.init_db(db_path)
+
+    try:
+        data = storage.get_stats(conn)
+        click.echo("fnsvr Stats")
+        click.echo("-----------")
+        click.echo(f"Total tracked:  {data['total']}")
+        click.echo(f"Unreviewed:     {data['unreviewed']}")
+        click.echo("")
+
+        click.echo("By Category:")
+        if data["by_category"]:
+            for cat, count in sorted(data["by_category"].items()):
+                click.echo(f"  {cat}: {count}")
+        else:
+            click.echo("  (none)")
+        click.echo("")
+
+        click.echo("By Priority:")
+        if data["by_priority"]:
+            for priority, count in sorted(data["by_priority"].items()):
+                click.echo(f"  {priority}: {count}")
+        else:
+            click.echo("  (none)")
+    finally:
+        conn.close()
