@@ -94,10 +94,10 @@ Plans:
   1. Single index.html file under 30KB with dark terminal aesthetic, monospace code, warm amber accents
   2. Page includes all required sections: hero, problem statement, 5-category feature grid, 3-step how-it-works, design principles, quick-start terminal block, footer
   3. Zero analytics, zero tracking, zero cookies, zero JS frameworks -- deployable to GitHub Pages or Vercel with no build step
-**Plans**: TBD
+**Plans:** 1 plan
 
 Plans:
-- [ ] 05-01: TBD
+- [ ] 05-01-PLAN.md -- Single-file landing page with dark terminal aesthetic, feature grid, and quick-start
 
 ## Progress
 
