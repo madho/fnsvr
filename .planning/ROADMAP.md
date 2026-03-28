@@ -97,7 +97,7 @@ Plans:
 **Plans:** 1 plan
 
 Plans:
-- [ ] 05-01-PLAN.md -- Single-file landing page with dark terminal aesthetic, feature grid, and quick-start
+- [x] 05-01-PLAN.md -- Single-file landing page with dark terminal aesthetic, feature grid, and quick-start
 
 ## Progress
 

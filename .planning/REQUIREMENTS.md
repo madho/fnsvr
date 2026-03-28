@@ -103,11 +103,11 @@ Requirements for initial release. Each maps to roadmap phases.
 
 ### Website
 
-- [ ] **WEB-01**: Single-page landing site (fnsvr.com) in one self-contained index.html file
-- [ ] **WEB-02**: Dark terminal aesthetic with monospace code, warm amber accents, under 30KB total
-- [ ] **WEB-03**: Sections: hero, problem statement, 5-category feature grid, 3-step how-it-works, design principles, quick-start terminal block, footer
-- [ ] **WEB-04**: No analytics, no tracking, no cookies, no JS frameworks
-- [ ] **WEB-05**: Deployable to GitHub Pages or Vercel with zero build step
+- [x] **WEB-01**: Single-page landing site (fnsvr.com) in one self-contained index.html file
+- [x] **WEB-02**: Dark terminal aesthetic with monospace code, warm amber accents, under 30KB total
+- [x] **WEB-03**: Sections: hero, problem statement, 5-category feature grid, 3-step how-it-works, design principles, quick-start terminal block, footer
+- [x] **WEB-04**: No analytics, no tracking, no cookies, no JS frameworks
+- [x] **WEB-05**: Deployable to GitHub Pages or Vercel with zero build step
 
 ### Testing
 
@@ -220,11 +220,11 @@ Which phases cover which requirements. Updated during roadmap creation.
 | DIST-01 | Phase 4 | Complete |
 | DIST-02 | Phase 4 | Complete |
 | DIST-03 | Phase 4 | Complete |
-| WEB-01 | Phase 5 | Pending |
-| WEB-02 | Phase 5 | Pending |
-| WEB-03 | Phase 5 | Pending |
-| WEB-04 | Phase 5 | Pending |
-| WEB-05 | Phase 5 | Pending |
+| WEB-01 | Phase 5 | Complete |
+| WEB-02 | Phase 5 | Complete |
+| WEB-03 | Phase 5 | Complete |
+| WEB-04 | Phase 5 | Complete |
+| WEB-05 | Phase 5 | Complete |
 | TEST-01 | Phase 1 | Complete |
 | TEST-02 | Phase 1 | Complete |
 | TEST-03 | Phase 1 | Complete |
