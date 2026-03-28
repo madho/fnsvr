@@ -354,3 +354,192 @@ def test_fetch_message_ids_empty(mock_get_service):
     mock_service.users().messages().list().execute.return_value = {}
     result = scanner.fetch_message_ids(mock_service, "after:0", 100)
     assert result == []
+
+
+# ---------------------------------------------------------------------------
+# Integration: scan_account downloads attachments (02-03)
+# ---------------------------------------------------------------------------
+
+@patch("fnsvr.scanner.get_gmail_service")
+def test_scan_account_downloads_attachments(
+    mock_get_service, sample_config, db_conn, sample_message_payload, tmp_path
+):
+    """scan_account calls downloader.process_attachments and writes files to disk."""
+    import base64
+
+    from fnsvr.detector import compile_patterns
+
+    mock_service = MagicMock()
+    mock_get_service.return_value = mock_service
+
+    # messages().list returns one message
+    mock_service.users().messages().list().execute.return_value = {
+        "messages": [{"id": "msg123"}]
+    }
+    # messages().get returns sample payload (has K1_2025.pdf attachment)
+    mock_service.users().messages().get().execute.return_value = sample_message_payload
+
+    # attachments().get returns fake PDF data
+    fake_pdf = base64.urlsafe_b64encode(b"fake pdf content").decode()
+    mock_service.users().messages().attachments().get().execute.return_value = {
+        "data": fake_pdf
+    }
+
+    # Point attachments path to tmp_path
+    sample_config["paths"]["attachments"] = str(tmp_path / "attachments")
+
+    patterns = compile_patterns(sample_config["categories"])
+    account = sample_config["accounts"][0]
+
+    scanned, detected, downloaded = scanner.scan_account(
+        account, sample_config, db_conn, patterns, 3, tmp_path
+    )
+
+    assert scanned == 1
+    assert detected == 1
+    assert downloaded == 1
+
+    # Verify file exists on disk
+    attachment_dir = tmp_path / "attachments" / "personal"
+    pdf_files = list(attachment_dir.glob("*.pdf"))
+    assert len(pdf_files) == 1
+    assert b"fake pdf content" in pdf_files[0].read_bytes()
+
+    # Verify attachments table has 1 row with downloaded=1
+    row = db_conn.execute("SELECT * FROM attachments WHERE downloaded = 1").fetchone()
+    assert row is not None
+    assert row["filename"] == "K1_2025.pdf"
+
+
+# ---------------------------------------------------------------------------
+# Integration: scan_all with account_filter (02-03)
+# ---------------------------------------------------------------------------
+
+@patch("fnsvr.scanner.get_gmail_service")
+def test_scan_all_with_account_filter(mock_get_service, sample_config, db_conn, tmp_path):
+    """scan_all with account_filter='work' scans only the work account."""
+    # Add a second account
+    sample_config["accounts"].append({
+        "name": "work",
+        "email": "work@gmail.com",
+        "credentials_file": "credentials/work_credentials.json",
+        "token_file": "credentials/work_token.json",
+    })
+    sample_config["paths"]["attachments"] = str(tmp_path / "attachments")
+
+    mock_service = MagicMock()
+    mock_get_service.return_value = mock_service
+    mock_service.users().messages().list().execute.return_value = {"messages": []}
+
+    results = scanner.scan_all(
+        sample_config, db_conn, 3, tmp_path, account_filter="work"
+    )
+
+    assert len(results) == 1
+    assert results[0][0] == "work"
+
+
+# ---------------------------------------------------------------------------
+# CLI: Lookback flag tests (02-03)
+# ---------------------------------------------------------------------------
+
+
+class TestScanLookbackFlags:
+    """Verify --initial, --days, and default lookback via CliRunner."""
+
+    @patch("fnsvr.cli.scanner.scan_all")
+    @patch("fnsvr.cli.storage.init_db")
+    @patch("fnsvr.cli.config.ensure_dirs")
+    @patch("fnsvr.cli.config.load_config")
+    def test_default_lookback(
+        self, mock_load, mock_ensure, mock_init_db, mock_scan_all, sample_config, tmp_path
+    ):
+        """Default scan (no flags) uses regular_lookback_days (3)."""
+        from click.testing import CliRunner
+
+        from fnsvr.cli import main
+
+        sample_config["paths"]["database"] = str(tmp_path / "test.db")
+        mock_load.return_value = sample_config
+        mock_conn = MagicMock()
+        mock_init_db.return_value = mock_conn
+        mock_scan_all.return_value = [("personal", 5, 2, 0, None)]
+
+        runner = CliRunner()
+        result = runner.invoke(main, ["scan"])
+
+        assert result.exit_code == 0
+        # Verify scan_all called with lookback_days=3
+        _, kwargs = mock_scan_all.call_args
+        args = mock_scan_all.call_args[0]
+        assert args[2] == 3  # lookback_days positional arg
+
+    @patch("fnsvr.cli.scanner.scan_all")
+    @patch("fnsvr.cli.storage.init_db")
+    @patch("fnsvr.cli.config.ensure_dirs")
+    @patch("fnsvr.cli.config.load_config")
+    def test_initial_flag(
+        self, mock_load, mock_ensure, mock_init_db, mock_scan_all, sample_config, tmp_path
+    ):
+        """--initial uses initial_lookback_days (90)."""
+        from click.testing import CliRunner
+
+        from fnsvr.cli import main
+
+        sample_config["paths"]["database"] = str(tmp_path / "test.db")
+        mock_load.return_value = sample_config
+        mock_conn = MagicMock()
+        mock_init_db.return_value = mock_conn
+        mock_scan_all.return_value = [("personal", 10, 3, 0, None)]
+
+        runner = CliRunner()
+        result = runner.invoke(main, ["scan", "--initial"])
+
+        assert result.exit_code == 0
+        args = mock_scan_all.call_args[0]
+        assert args[2] == 90  # lookback_days
+
+    @patch("fnsvr.cli.scanner.scan_all")
+    @patch("fnsvr.cli.storage.init_db")
+    @patch("fnsvr.cli.config.ensure_dirs")
+    @patch("fnsvr.cli.config.load_config")
+    def test_days_flag(
+        self, mock_load, mock_ensure, mock_init_db, mock_scan_all, sample_config, tmp_path
+    ):
+        """--days 14 passes lookback_days=14."""
+        from click.testing import CliRunner
+
+        from fnsvr.cli import main
+
+        sample_config["paths"]["database"] = str(tmp_path / "test.db")
+        mock_load.return_value = sample_config
+        mock_conn = MagicMock()
+        mock_init_db.return_value = mock_conn
+        mock_scan_all.return_value = [("personal", 20, 5, 0, None)]
+
+        runner = CliRunner()
+        result = runner.invoke(main, ["scan", "--days", "14"])
+
+        assert result.exit_code == 0
+        args = mock_scan_all.call_args[0]
+        assert args[2] == 14  # lookback_days
+
+
+# ---------------------------------------------------------------------------
+# CLI: setup unknown account (02-03)
+# ---------------------------------------------------------------------------
+
+@patch("fnsvr.cli.config.load_config")
+def test_cli_setup_unknown_account(mock_load, sample_config):
+    """setup with unknown account name shows error."""
+    from click.testing import CliRunner
+
+    from fnsvr.cli import main
+
+    mock_load.return_value = sample_config
+
+    runner = CliRunner()
+    result = runner.invoke(main, ["setup", "nonexistent"])
+
+    assert result.exit_code != 0
+    assert "not found in config" in result.output
