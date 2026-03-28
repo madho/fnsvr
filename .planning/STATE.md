@@ -3,13 +3,13 @@ gsd_state_version: 1.0
 milestone: v1.0
 milestone_name: milestone
 status: unknown
-stopped_at: Completed 01-02-PLAN.md
-last_updated: "2026-03-28T19:40:43.521Z"
+stopped_at: Completed 01-03-PLAN.md
+last_updated: "2026-03-28T19:41:30.471Z"
 progress:
   total_phases: 5
-  completed_phases: 0
+  completed_phases: 1
   total_plans: 3
-  completed_plans: 2
+  completed_plans: 3
 ---
 
 # Project State
@@ -48,6 +48,7 @@ Plan: 3 of 3
 *Updated after each plan completion*
 | Phase 01-foundation P01 | 3min | 2 tasks | 8 files |
 | Phase 01 P02 | 2min | 1 tasks | 2 files |
+| Phase 01-foundation P03 | 2min | 1 tasks | 2 files |
 
 ## Accumulated Context
 
@@ -62,6 +63,7 @@ Recent decisions affecting current work:
 - [Phase 01-foundation]: Used Path(__file__).parent to locate bundled config.example.yaml (works in editable and installed mode)
 - [Phase 01-foundation]: os.path.expandvars + expanduser for resolve_path (pathlib expanduser alone does not handle env vars)
 - [Phase 01]: All storage functions receive conn as parameter -- no global connection state
+- [Phase 01-foundation]: Plain substring matching with 'in' operator instead of regex for detector patterns
 
 ### Pending Todos
 
@@ -74,6 +76,6 @@ None yet.
 
 ## Session Continuity
 
-Last session: 2026-03-28T19:40:43.520Z
-Stopped at: Completed 01-02-PLAN.md
+Last session: 2026-03-28T19:41:30.469Z
+Stopped at: Completed 01-03-PLAN.md
 Resume file: None

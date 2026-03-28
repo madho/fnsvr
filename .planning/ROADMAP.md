@@ -12,7 +12,7 @@ fnsvr delivers a local-first CLI tool that monitors multiple Gmail accounts for 
 
 Decimal phases appear between their surrounding integers in numeric order.
 
-- [ ] **Phase 1: Foundation** - Config loading, SQLite storage, and pattern detection engine with unit tests
+- [x] **Phase 1: Foundation** - Config loading, SQLite storage, and pattern detection engine with unit tests (completed 2026-03-28)
 - [ ] **Phase 2: Gmail Integration** - OAuth setup, multi-account scanning, attachment downloading
 - [ ] **Phase 3: User-Facing Output** - Notifications, digest generation, interactive review, and stats
 - [ ] **Phase 4: Automation and Distribution** - launchd scheduling, PyPI packaging, Homebrew formula
@@ -30,12 +30,12 @@ Decimal phases appear between their surrounding integers in numeric order.
   3. SQLite database initializes with correct schema (detected_emails, attachments, scan_log), WAL mode, and proper indexes
   4. Detector matches email subjects/senders against config-defined patterns with correct category assignment, priority ordering, and deduplication
   5. Unit tests pass for config loading, storage CRUD, and detector pattern matching (TEST-01, TEST-02, TEST-03)
-**Plans:** 3 plans
+**Plans:** 3/3 plans complete
 
 Plans:
 - [x] 01-01-PLAN.md -- Project scaffold, config.py module, and config unit tests
 - [x] 01-02-PLAN.md -- SQLite storage layer with schema, CRUD, and unit tests
-- [ ] 01-03-PLAN.md -- Pattern detection engine with pure functions and unit tests
+- [x] 01-03-PLAN.md -- Pattern detection engine with pure functions and unit tests
 
 ### Phase 2: Gmail Integration
 **Goal**: Users can authenticate Gmail accounts and scan them for financial emails with attachments downloaded automatically
@@ -105,7 +105,7 @@ Phases execute in numeric order (1 through 4 sequentially). Phase 5 can execute 
 
 | Phase | Plans Complete | Status | Completed |
 |-------|----------------|--------|-----------|
-| 1. Foundation | 0/3 | Not started | - |
+| 1. Foundation | 3/3 | Complete   | 2026-03-28 |
 | 2. Gmail Integration | 0/3 | Not started | - |
 | 3. User-Facing Output | 0/3 | Not started | - |
 | 4. Automation and Distribution | 0/2 | Not started | - |

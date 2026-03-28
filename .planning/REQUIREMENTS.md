@@ -25,11 +25,11 @@ Requirements for initial release. Each maps to roadmap phases.
 
 ### Detection
 
-- [ ] **DET-01**: Detector matches email subjects and senders against config-defined patterns using case-insensitive substring matching
-- [ ] **DET-02**: All detection patterns are config-driven in YAML -- zero hardcoded patterns in source code
-- [ ] **DET-03**: Detection covers 5 categories: tax_documents (critical), signature_requests (critical), equity_grants (critical), brokerage_statements (high), bank_statements (high)
-- [ ] **DET-04**: Subject patterns are checked before sender patterns; first match wins across categories
-- [ ] **DET-05**: Each detection records: message_id, account, category, priority, subject, sender, date, snippet, matched_pattern, attachment status
+- [x] **DET-01**: Detector matches email subjects and senders against config-defined patterns using case-insensitive substring matching
+- [x] **DET-02**: All detection patterns are config-driven in YAML -- zero hardcoded patterns in source code
+- [x] **DET-03**: Detection covers 5 categories: tax_documents (critical), signature_requests (critical), equity_grants (critical), brokerage_statements (high), bank_statements (high)
+- [x] **DET-04**: Subject patterns are checked before sender patterns; first match wins across categories
+- [x] **DET-05**: Each detection records: message_id, account, category, priority, subject, sender, date, snippet, matched_pattern, attachment status
 - [x] **DET-06**: Duplicate emails (same message_id + account_email) are not re-detected
 
 ### Scanning
@@ -111,7 +111,7 @@ Requirements for initial release. Each maps to roadmap phases.
 
 ### Testing
 
-- [ ] **TEST-01**: Unit tests for detector.py -- pattern compilation, matching, case insensitivity, no-match, priority order
+- [x] **TEST-01**: Unit tests for detector.py -- pattern compilation, matching, case insensitivity, no-match, priority order
 - [x] **TEST-02**: Unit tests for storage.py -- DB init, insert, dedup, queries, mark reviewed, stats
 - [x] **TEST-03**: Unit tests for config.py -- loading, validation errors, path resolution, missing file handling
 - [ ] **TEST-04**: Unit tests for digest.py -- empty list, single item, multiple categories, action section
@@ -172,11 +172,11 @@ Which phases cover which requirements. Updated during roadmap creation.
 | AUTH-03 | Phase 2 | Pending |
 | AUTH-04 | Phase 2 | Pending |
 | AUTH-05 | Phase 2 | Pending |
-| DET-01 | Phase 1 | Pending |
-| DET-02 | Phase 1 | Pending |
-| DET-03 | Phase 1 | Pending |
-| DET-04 | Phase 1 | Pending |
-| DET-05 | Phase 1 | Pending |
+| DET-01 | Phase 1 | Complete |
+| DET-02 | Phase 1 | Complete |
+| DET-03 | Phase 1 | Complete |
+| DET-04 | Phase 1 | Complete |
+| DET-05 | Phase 1 | Complete |
 | DET-06 | Phase 1 | Complete |
 | SCAN-01 | Phase 2 | Pending |
 | SCAN-02 | Phase 2 | Pending |
@@ -225,7 +225,7 @@ Which phases cover which requirements. Updated during roadmap creation.
 | WEB-03 | Phase 5 | Pending |
 | WEB-04 | Phase 5 | Pending |
 | WEB-05 | Phase 5 | Pending |
-| TEST-01 | Phase 1 | Pending |
+| TEST-01 | Phase 1 | Complete |
 | TEST-02 | Phase 1 | Complete |
 | TEST-03 | Phase 1 | Complete |
 | TEST-04 | Phase 3 | Pending |
