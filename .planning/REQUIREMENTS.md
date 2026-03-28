@@ -90,10 +90,10 @@ Requirements for initial release. Each maps to roadmap phases.
 
 ### Scheduling
 
-- [ ] **SCHED-01**: launchd plist for scanning every 4 hours with RunAtLoad
-- [ ] **SCHED-02**: launchd plist for weekly digest generation (Monday 8am)
-- [ ] **SCHED-03**: Plists are generated dynamically with absolute binary paths (not static templates)
-- [ ] **SCHED-04**: User can install/uninstall scheduling via CLI commands (not manual launchctl)
+- [x] **SCHED-01**: launchd plist for scanning every 4 hours with RunAtLoad
+- [x] **SCHED-02**: launchd plist for weekly digest generation (Monday 8am)
+- [x] **SCHED-03**: Plists are generated dynamically with absolute binary paths (not static templates)
+- [x] **SCHED-04**: User can install/uninstall scheduling via CLI commands (not manual launchctl)
 
 ### Distribution
 
@@ -213,10 +213,10 @@ Which phases cover which requirements. Updated during roadmap creation.
 | REV-06 | Phase 3 | Complete |
 | STAT-01 | Phase 3 | Complete |
 | STAT-02 | Phase 3 | Complete |
-| SCHED-01 | Phase 4 | Pending |
-| SCHED-02 | Phase 4 | Pending |
-| SCHED-03 | Phase 4 | Pending |
-| SCHED-04 | Phase 4 | Pending |
+| SCHED-01 | Phase 4 | Complete |
+| SCHED-02 | Phase 4 | Complete |
+| SCHED-03 | Phase 4 | Complete |
+| SCHED-04 | Phase 4 | Complete |
 | DIST-01 | Phase 4 | Complete |
 | DIST-02 | Phase 4 | Complete |
 | DIST-03 | Phase 4 | Complete |

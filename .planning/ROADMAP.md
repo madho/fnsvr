@@ -83,7 +83,7 @@ Plans:
 **Plans:** 2 plans
 
 Plans:
-- [ ] 04-01-PLAN.md -- launchd scheduler module with dynamic plist generation and CLI schedule commands
+- [x] 04-01-PLAN.md -- launchd scheduler module with dynamic plist generation and CLI schedule commands
 - [x] 04-02-PLAN.md -- PyPI packaging finalization and Homebrew tap formula
 
 ### Phase 5: Landing Page

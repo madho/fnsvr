@@ -3,13 +3,13 @@ gsd_state_version: 1.0
 milestone: v1.0
 milestone_name: milestone
 status: unknown
-stopped_at: Completed 04-02-PLAN.md
-last_updated: "2026-03-28T20:26:42.422Z"
+stopped_at: Completed 04-01-PLAN.md
+last_updated: "2026-03-28T20:27:45.048Z"
 progress:
   total_phases: 5
-  completed_phases: 3
+  completed_phases: 4
   total_plans: 12
-  completed_plans: 11
+  completed_plans: 12
 ---
 
 # Project State
@@ -57,6 +57,7 @@ Plan: 2 of 2
 | Phase 03-01 P01 | 2min | 2 tasks | 2 files |
 | Phase 03 P04 | 1min | 2 tasks | 1 files |
 | Phase 04 P02 | 1min | 2 tasks | 2 files |
+| Phase 04 P01 | 2min | 2 tasks | 3 files |
 
 ## Accumulated Context
 
@@ -87,6 +88,8 @@ Recent decisions affecting current work:
 - [Phase 03]: Followed existing CLI pattern: load config, init db, try/finally close for all new commands
 - [Phase 03]: stats command uses plain terminal formatting (no markdown) per CONTEXT.md
 - [Phase 04]: pyproject.toml already complete for PyPI -- only MANIFEST.in was needed
+- [Phase 04]: Used plistlib from stdlib for plist XML generation (not string templates)
+- [Phase 04]: Binary detection: shutil.which -> sys.executable sibling -> python -m fnsvr fallback
 
 ### Pending Todos
 
@@ -99,6 +102,6 @@ None yet.
 
 ## Session Continuity
 
-Last session: 2026-03-28T20:26:42.421Z
-Stopped at: Completed 04-02-PLAN.md
+Last session: 2026-03-28T20:27:45.046Z
+Stopped at: Completed 04-01-PLAN.md
 Resume file: None
