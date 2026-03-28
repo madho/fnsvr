@@ -64,12 +64,13 @@ Plans:
   3. User can run `fnsvr review` to interactively triage unreviewed items (mark reviewed with notes, skip, quit, mark-all), filterable by category and account
   4. User can run `fnsvr stats` for instant terminal summary of tracked items, unreviewed counts, and breakdowns -- with zero Gmail API calls
   5. Unit tests pass for digest generation (TEST-04)
-**Plans**: TBD
+**Plans:** 4 plans
 
 Plans:
-- [ ] 03-01: TBD
-- [ ] 03-02: TBD
-- [ ] 03-03: TBD
+- [ ] 03-01-PLAN.md -- macOS notification module and scanner integration
+- [ ] 03-02-PLAN.md -- Markdown digest generator with storage helper and unit tests
+- [ ] 03-03-PLAN.md -- Interactive review module
+- [ ] 03-04-PLAN.md -- CLI commands for digest, review, and stats
 
 ### Phase 4: Automation and Distribution
 **Goal**: The tool runs unattended on a schedule and is installable in one command
@@ -107,6 +108,6 @@ Phases execute in numeric order (1 through 4 sequentially). Phase 5 can execute 
 |-------|----------------|--------|-----------|
 | 1. Foundation | 3/3 | Complete   | 2026-03-28 |
 | 2. Gmail Integration | 0/3 | Planned | - |
-| 3. User-Facing Output | 0/3 | Not started | - |
+| 3. User-Facing Output | 0/4 | Planned | - |
 | 4. Automation and Distribution | 0/2 | Not started | - |
 | 5. Landing Page | 0/1 | Not started | - |
