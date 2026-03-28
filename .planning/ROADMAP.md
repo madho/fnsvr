@@ -70,7 +70,7 @@ Plans:
 - [x] 03-01-PLAN.md -- macOS notification module and scanner integration
 - [x] 03-02-PLAN.md -- Markdown digest generator with storage helper and unit tests
 - [x] 03-03-PLAN.md -- Interactive review module
-- [ ] 03-04-PLAN.md -- CLI commands for digest, review, and stats
+- [x] 03-04-PLAN.md -- CLI commands for digest, review, and stats
 
 ### Phase 4: Automation and Distribution
 **Goal**: The tool runs unattended on a schedule and is installable in one command

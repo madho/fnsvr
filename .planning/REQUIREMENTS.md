@@ -85,8 +85,8 @@ Requirements for initial release. Each maps to roadmap phases.
 
 ### Stats
 
-- [ ] **STAT-01**: User can run `fnsvr stats` for terminal summary of total tracked, unreviewed count, breakdown by category and priority
-- [ ] **STAT-02**: Stats read from SQLite only -- no Gmail API calls
+- [x] **STAT-01**: User can run `fnsvr stats` for terminal summary of total tracked, unreviewed count, breakdown by category and priority
+- [x] **STAT-02**: Stats read from SQLite only -- no Gmail API calls
 
 ### Scheduling
 
@@ -211,8 +211,8 @@ Which phases cover which requirements. Updated during roadmap creation.
 | REV-04 | Phase 3 | Complete |
 | REV-05 | Phase 3 | Complete |
 | REV-06 | Phase 3 | Complete |
-| STAT-01 | Phase 3 | Pending |
-| STAT-02 | Phase 3 | Pending |
+| STAT-01 | Phase 3 | Complete |
+| STAT-02 | Phase 3 | Complete |
 | SCHED-01 | Phase 4 | Pending |
 | SCHED-02 | Phase 4 | Pending |
 | SCHED-03 | Phase 4 | Pending |
