@@ -151,31 +151,21 @@ class TestMatchEmail:
         assert result.matched_pattern == "sender:docusign"
 
     def test_subject_before_sender(self) -> None:
-        """When both subject and sender match different categories, subject match wins."""
-        patterns = _make_patterns()
-        # Subject matches signature_requests, sender matches tax_documents
-        result = match_email("Please sign this", "tax@irs.gov", patterns)
+        """Within a category, subject match is returned before sender match."""
+        # Single category where BOTH subject and sender would match.
+        # Subject should win because it is checked first.
+        categories = {
+            "dual_match": {
+                "label": "Dual Match",
+                "priority": "critical",
+                "subject_patterns": ["urgent doc"],
+                "sender_patterns": ["alerts.example.com"],
+            },
+        }
+        patterns = compile_patterns(categories)
+        result = match_email("Urgent Doc Review", "team@alerts.example.com", patterns)
         assert result is not None
-        # Subject match in signature_requests should win because we iterate categories
-        # in order and signature_requests comes after tax_documents, BUT
-        # the subject "Please sign this" doesn't match tax_documents subjects.
-        # tax_documents has no subject match here, so it checks sender -> irs.gov matches.
-        # BUT subject patterns are checked first WITHIN each category.
-        # tax_documents: subject patterns [k-1, 1099, w-2] -- no match
-        #                sender patterns [irs.gov, turbotax] -- "irs.gov" matches!
-        # So tax_documents wins because it's first in order and sender matches.
-        # Let's use a case where subject in one cat AND sender in another both match:
-        # We need the subject to match a LATER category while sender matches an EARLIER one.
-        # Use subject="please sign" (matches signature_requests) with sender from tax
-        # But tax_documents is checked first. Its subjects don't match "please sign".
-        # Its senders include "irs.gov". If sender is "irs.gov", tax_documents sender matches.
-        # So we need a sender from a category that comes BEFORE signature_requests
-        # and a subject that matches signature_requests.
-        # Actually, within each category, subject is checked before sender.
-        # So for tax_documents: check subjects (no match), check senders (irs.gov matches).
-        # First match wins means tax_documents wins, not signature_requests.
-        # To test subject-before-sender, use a single category where both could match.
-        pass
+        assert result.matched_pattern == "subject:urgent doc"
 
     def test_subject_before_sender_same_category(self) -> None:
         """Within a single category, subject match takes priority over sender match."""
