@@ -17,11 +17,11 @@ Requirements for initial release. Each maps to roadmap phases.
 
 ### Authentication
 
-- [ ] **AUTH-01**: User can run `fnsvr setup <account>` to initiate browser-based OAuth flow for a Gmail account (like gcloud auth login)
-- [ ] **AUTH-02**: OAuth uses gmail.readonly scope exclusively -- no write access under any circumstances
-- [ ] **AUTH-03**: OAuth tokens are stored locally with 600 file permissions (owner-only)
-- [ ] **AUTH-04**: Expired tokens are auto-refreshed on subsequent scans without user intervention
-- [ ] **AUTH-05**: Failed token refresh produces clear error message directing user to re-run `fnsvr setup`
+- [x] **AUTH-01**: User can run `fnsvr setup <account>` to initiate browser-based OAuth flow for a Gmail account (like gcloud auth login)
+- [x] **AUTH-02**: OAuth uses gmail.readonly scope exclusively -- no write access under any circumstances
+- [x] **AUTH-03**: OAuth tokens are stored locally with 600 file permissions (owner-only)
+- [x] **AUTH-04**: Expired tokens are auto-refreshed on subsequent scans without user intervention
+- [x] **AUTH-05**: Failed token refresh produces clear error message directing user to re-run `fnsvr setup`
 
 ### Detection
 
@@ -34,12 +34,12 @@ Requirements for initial release. Each maps to roadmap phases.
 
 ### Scanning
 
-- [ ] **SCAN-01**: User can run `fnsvr scan` to scan all configured accounts with 3-day default lookback
-- [ ] **SCAN-02**: User can run `fnsvr scan --initial` for 90-day deep lookback on first run
-- [ ] **SCAN-03**: User can run `fnsvr scan --days N` for custom lookback period
-- [ ] **SCAN-04**: User can run `fnsvr scan --account <name>` to scan a single account
-- [ ] **SCAN-05**: Scan errors for one account do not block scanning of other accounts
-- [ ] **SCAN-06**: Every scan is logged with start time, completion time, emails scanned/detected, errors, and status
+- [x] **SCAN-01**: User can run `fnsvr scan` to scan all configured accounts with 3-day default lookback
+- [x] **SCAN-02**: User can run `fnsvr scan --initial` for 90-day deep lookback on first run
+- [x] **SCAN-03**: User can run `fnsvr scan --days N` for custom lookback period
+- [x] **SCAN-04**: User can run `fnsvr scan --account <name>` to scan a single account
+- [x] **SCAN-05**: Scan errors for one account do not block scanning of other accounts
+- [x] **SCAN-06**: Every scan is logged with start time, completion time, emails scanned/detected, errors, and status
 
 ### Storage
 
@@ -167,23 +167,23 @@ Which phases cover which requirements. Updated during roadmap creation.
 | CFG-03 | Phase 1 | Complete |
 | CFG-04 | Phase 1 | Complete |
 | CFG-05 | Phase 1 | Complete |
-| AUTH-01 | Phase 2 | Pending |
-| AUTH-02 | Phase 2 | Pending |
-| AUTH-03 | Phase 2 | Pending |
-| AUTH-04 | Phase 2 | Pending |
-| AUTH-05 | Phase 2 | Pending |
+| AUTH-01 | Phase 2 | Complete |
+| AUTH-02 | Phase 2 | Complete |
+| AUTH-03 | Phase 2 | Complete |
+| AUTH-04 | Phase 2 | Complete |
+| AUTH-05 | Phase 2 | Complete |
 | DET-01 | Phase 1 | Complete |
 | DET-02 | Phase 1 | Complete |
 | DET-03 | Phase 1 | Complete |
 | DET-04 | Phase 1 | Complete |
 | DET-05 | Phase 1 | Complete |
 | DET-06 | Phase 1 | Complete |
-| SCAN-01 | Phase 2 | Pending |
-| SCAN-02 | Phase 2 | Pending |
-| SCAN-03 | Phase 2 | Pending |
-| SCAN-04 | Phase 2 | Pending |
-| SCAN-05 | Phase 2 | Pending |
-| SCAN-06 | Phase 2 | Pending |
+| SCAN-01 | Phase 2 | Complete |
+| SCAN-02 | Phase 2 | Complete |
+| SCAN-03 | Phase 2 | Complete |
+| SCAN-04 | Phase 2 | Complete |
+| SCAN-05 | Phase 2 | Complete |
+| SCAN-06 | Phase 2 | Complete |
 | STOR-01 | Phase 1 | Complete |
 | STOR-02 | Phase 1 | Complete |
 | STOR-03 | Phase 1 | Complete |
